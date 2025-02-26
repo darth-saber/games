@@ -3,108 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Epic Gaming Website</title>
+    <title>Sports Equipment Stores</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="script.js" defer></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
-        <h1 class="logo">GAMING UNIVERSE</h1>
+        <h1>Welcome to Sports Equipment Stores</h1>
         <nav>
             <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#games">Games</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#cart">Cart</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#login">Login</a></li>
             </ul>
         </nav>
+        <input type="text" id="searchBar" placeholder="Search for products..." onkeyup="searchProducts()">
+        <button onclick="toggleDarkMode()">Dark Mode</button>
     </header>
     
-    <section class="hero">
-        <canvas id="heroCanvas"></canvas>
-        <h2 class="hero-title">Welcome to the Ultimate Gaming Experience</h2>
+    <section id="home">
+        <h2>Find the Best Sports Gear</h2>
+        <p>Explore our collection of high-performance sports equipment.</p>
     </section>
     
-    <section class="parallax-slider">
-        <div class="slide" id="slide1">Game 1</div>
-        <div class="slide" id="slide2">Game 2</div>
-        <div class="slide" id="slide3">Game 3</div>
-    </section>
-    
-    <section class="scroll-section">
-        <h2>Discover New Worlds</h2>
-        <p>Immerse yourself in next-gen gaming with breathtaking visuals and seamless gameplay.</p>
-    </section>
-    
-    <section id="games">
-        <h2>Featured Games</h2>
-        <div class="game-grid">
-            <div class="game-card">Game A</div>
-            <div class="game-card">Game B</div>
-            <div class="game-card">Game C</div>
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="product">
+            <img src="images/basketball.jpeg" alt="Basketball">
+            <h3>Professional Basketball</h3>
+            <p>$49.99</p>
+            <button onclick="addToCart('Basketball', 49.99)">Add to Cart</button>
         </div>
+        <div class="product">
+            <img src="images/Fifa Soccerball.jpg" alt="Soccer Ball">
+            <h3>FIFA Approved Soccer Ball</h3>
+            <p>$39.99</p>
+            <button onclick="addToCart('Soccer Ball', 39.99)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/tennis-racket.jpg" alt="Tennis Racket">
+            <h3>Premium Tennis Racket</h3>
+            <p>$59.99</p>
+            <button onclick="addToCart('Tennis Racket', 59.99)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/cycling-helmet.jpg" alt="Cycling Helmet">
+            <h3>Safety Cycling Helmet</h3>
+            <p>$29.99</p>
+            <button onclick="addToCart('Cycling Helmet', 29.99)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/swimming-goggles.jpg" alt="Swimming Goggles">
+            <h3>Anti-Fog Swimming Goggles</h3>
+            <p>$19.99</p>
+            <button onclick="addToCart('Swimming Goggles', 19.99)">Add to Cart</button>
+        </div>
+    </section>
+    
+    <section id="cart">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+        <button onclick="checkout()">Proceed to Checkout</button>
+    </section>
+    
+    <section id="reviews">
+        <h2>Customer Reviews</h2>
+        <div id="reviews-list"></div>
+        <textarea id="review-text" placeholder="Leave a review..."></textarea>
+        <button onclick="submitReview()">Submit Review</button>
+    </section>
+    
+    <section id="newsletter">
+        <h2>Subscribe to Our Newsletter</h2>
+        <input type="email" id="email" placeholder="Enter your email">
+        <button onclick="subscribeNewsletter()">Subscribe</button>
     </section>
     
     <section id="about">
         <h2>About Us</h2>
-        <p>We are dedicated to bringing you the best gaming experiences, blending technology and creativity.</p>
+        <p>We provide top-quality sports equipment designed for performance and durability.</p>
     </section>
     
-    <section id="leaderboard">
-        <h2>Live Dynamic Leaderboard</h2>
-        <div id="leaderboardContainer">
-            <!-- Placeholder for leaderboard data -->
-        </div>
-    </section>
-
-    <section id="chatbox">
-        <h2>Real-Time Chatbox</h2>
-        <div id="chatContainer">
-            <!-- Placeholder for chat messages -->
-        </div>
-        <input type="text" id="chatInput" placeholder="Type your message here..." />
-        <button id="sendChat">Send</button>
-    </section>
-
-    <section id="tournaments">
-        <h2>Tournaments & Rewards</h2>
-        <div id="tournamentContainer">
-            <!-- Placeholder for tournament information -->
-        </div>
-    </section>
-
-    <section id="miniGame">
-        <h2>Mini WebGL Game</h2>
-        <canvas id="gameCanvas"></canvas>
-    </section>
-
     <section id="contact">
         <h2>Contact Us</h2>
-        <form id="contactForm">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
+        <p>Email: support@sportsequipmentstores.com</p>
+        <p>Phone: +1 800-123-4567</p>
     </section>
     
-    <footer>
-        <p>&copy; 2025 Gaming Universe. All rights reserved.</p>
-    </footer>
+    <section id="login">
+        <h2>Login / Register</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="loginUser()">Login</button>
+        <button onclick="registerUser()">Register</button>
+    </section>
     
-    <script src="script.js" defer></script>
-</body>
-</html>
+    <script>
+        let cart = [];
+        function addToCart(item, price) {
+            cart.push({ item, price });
+            updateCart();
+        }
+        
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach(product => {
+                let li = document.createElement('li');
+                li.textContent = `${product.item} - $${product.price.toFixed(2)}`;
+                cartItems.appendChild(li);
+                total += product.price;
+            });
+            cartTotal.textContent = total.toFixed(2);
+        }
+        
+        function searchProducts() {
+            let input = document.getElementById('searchBar').value.toLowerCase();
+            let products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                let title = product.getElementsByTagName('h3')[0].textContent.toLowerCase();
+                product.style.display = title.includes(input) ? 'block' : 'none';
+            });
+        }
+        
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+        
+        function submitReview() {
+            let reviewText = document.getElementById('review-text').value;
+            if (reviewText) {
+                let reviewDiv = document.createElement('div');
+                reviewDiv.textContent = reviewText;
+                document.getElementById('reviews-list').appendChild(reviewDiv);
+            }
+        }
+        
+        function subscribeNewsletter() {
+            alert("Thank you for subscribing!");
+        }
+        
+        function checkout() {
+            alert("Proceeding to checkout...");
+        }
+    </script>
 </body>
 </html>
